@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Note;
+use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
-    public function index(Note $note) {
-        $note = $note->get();
-        return json_encode($note);
+    public function index(Request $request) {
+        $notes = $request->user();
+        return response()->json($notes);
     }
 }
