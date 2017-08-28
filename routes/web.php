@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+    return view('index');
+});
+
+Auth::routes();
+
+Route::middleware('auth')->get('app', function () {
+    return view('app');
 });
